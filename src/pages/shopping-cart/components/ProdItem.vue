@@ -30,7 +30,8 @@ import store from "../../../store";
 export default {
   name: "ProdItem",
   props: {
-    product: {}
+    product: {
+    }
   },
   methods: {
     storeIncreaseProd() {

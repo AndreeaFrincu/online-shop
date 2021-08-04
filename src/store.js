@@ -5,6 +5,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     productsList: [ "produs1", "produs2", "produs3" ],
+    //productsList: [],
+    product: {name: 'product', quantity: 0},
     counter: 0
   },
   mutations: {
