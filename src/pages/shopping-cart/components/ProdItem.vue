@@ -5,14 +5,14 @@
 
     <md-list-item>
       <div class="md-list-item-text">
-        <span>product</span>
+        <span>{{product}}</span>
         <span>{{ $store.state.counter }}</span>
       </div>
       <div class="cart-controls">
-        <md-button @click="$store.commit('decreaseProd')" class="md-icon-button md-list-action">
+        <md-button @click="storeDecreaseProd" class="md-icon-button md-list-action">
           <md-icon class="fa fa-minus-circle"></md-icon>
         </md-button>
-        <md-button @click="$store.commit('increaseProd')" class="md-icon-button md-list-action">
+        <md-button @click="storeIncreaseProd" class="md-icon-button md-list-action">
           <md-icon class="fa fa-plus-circle"></md-icon>
         </md-button>
         <md-button class="md-icon-button md-list-action">
@@ -25,8 +25,21 @@
 </template>
 
 <script>
+import store from "../../../store";
+
 export default {
-  name: "ProdItem"
+  name: "ProdItem",
+  props: {
+    product: {}
+  },
+  methods: {
+    storeIncreaseProd() {
+      store.commit('increaseProd');
+    },
+    storeDecreaseProd() {
+      store.commit('decreaseProd');
+    }
+  }
 }
 </script>
 

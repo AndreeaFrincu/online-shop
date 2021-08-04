@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
+    productsList: [ "produs1", "produs2", "produs3" ],
     counter: 0
   },
   mutations: {
