@@ -1,0 +1,81 @@
+<template>
+  <div class="component-container">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <md-toolbar class="md-primary">
+      <md-button class="md-icon-button" @click="showNavigation = true">
+        <md-icon class="fa fa-bars"></md-icon>
+      </md-button>
+      <span class="md-title">shop</span>
+      <div class="md-toolbar-section-end">
+        <md-button @click="showSidepanel = true">
+          <md-icon class="fa fa-info-circle"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-drawer :md-active.sync="showNavigation" md-swipeable>
+      <md-toolbar class="md-transparent" md-elevation="0">
+        <span class="md-title">shop name</span>
+      </md-toolbar>
+
+      <md-list>
+        <md-list-item>
+          <md-icon class="fa fa-home"></md-icon>
+          <span class="md-list-item-text">
+            <router-link id="link-home" to="/">
+              <md-button class="drawer-button">Home</md-button>
+            </router-link>
+          </span>
+        </md-list-item>
+
+        <md-list-item>
+          <md-icon class="fa fa-th-large"></md-icon>
+          <span class="md-list-item-text">
+            <router-link id="link-products" to="/products">
+              <md-button class="drawer-button">Products </md-button>
+            </router-link>
+          </span>
+        </md-list-item>
+
+        <md-list-item>
+          <md-icon class="fa fa-shopping-cart"></md-icon>
+          <span class="md-list-item-text">
+            <router-link id="link-cart" to="/cart">
+              <md-button class="drawer-button">Shopping Cart</md-button>
+            </router-link>
+          </span>
+        </md-list-item>
+      </md-list>
+    </md-drawer>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "NavBar",
+  data: () => ({
+    showNavigation: false,
+    showSidepanel: false
+  })
+}
+</script>
+
+<style scoped>
+
+.md-primary {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.drawer-button {
+}
+
+#link-home, #link-products, #link-cart {
+  color: black;
+  color: aliceblue;
+  text-decoration: none;
+}
+
+</style>

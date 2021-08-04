@@ -1,20 +1,16 @@
 <template>
-  <div class="home">
+  <div class="cart">
     <nav-bar></nav-bar>
-    <h1>Home</h1>
+    <cart-card></cart-card>
   </div>
 </template>
 
 <script>
 import NavBar from "../../components/NavBar";
+import CartCard from "./components/CartCard";
 export default {
-  components: {NavBar},
-  app: 'Hey',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
+  name: "Cart",
+  components: {CartCard, NavBar}
 }
 </script>
 
