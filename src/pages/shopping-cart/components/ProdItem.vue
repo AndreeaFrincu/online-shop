@@ -5,8 +5,8 @@
 
     <md-list-item>
       <div class="md-list-item-text">
-        <span>{{product}}</span>
-        <span>{{ $store.state.counter }}</span>
+        <span>{{ product.name }}</span>
+        <span>{{ product.quantity }}</span>
       </div>
       <div class="cart-controls">
         <md-button @click="storeDecreaseProd" class="md-icon-button md-list-action">
@@ -15,7 +15,7 @@
         <md-button @click="storeIncreaseProd" class="md-icon-button md-list-action">
           <md-icon class="fa fa-plus-circle"></md-icon>
         </md-button>
-        <md-button class="md-icon-button md-list-action">
+        <md-button @click="removeItem" class="md-icon-button md-list-action">
           <md-icon class="fa fa-trash"></md-icon>
         </md-button>
       </div>
@@ -25,19 +25,37 @@
 </template>
 
 <script>
-import store from "../../../store";
+import store from "../../../store/shopping-cart/store";
+import _ from "lodash";
 
 export default {
   name: "ProdItem",
   props: {
-    product: {}
+    product: {
+      name: {
+        type: String
+      },
+      quantity: {
+        type: Number
+      }
+    }
   },
   methods: {
     storeIncreaseProd() {
-      store.commit('increaseProd');
+      let cloneProduct = _.cloneDeep(this.product)
+      cloneProduct.quantity++;
+      store.commit('setItem', cloneProduct);
     },
     storeDecreaseProd() {
-      store.commit('decreaseProd');
+      let cloneProduct = _.cloneDeep(this.product)
+      if(this.product.quantity > 0) {
+        cloneProduct.quantity--;
+
+      }
+      store.commit('setItem', cloneProduct);
+    },
+    removeItem() {
+      store.commit('removeItem', this.product);
     }
   }
 }

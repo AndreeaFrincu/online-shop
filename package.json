@@ -10,6 +10,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
+    "npm-install-peers": "^1.2.2",
     "vue": "^2.5.2",
     "vue-material": "^1.0.0-beta-15",
     "vue-router": "^3.0.1",

@@ -10,7 +10,10 @@ import NavBar from "../../components/NavBar";
 import CartCard from "./components/CartCard";
 export default {
   name: "Cart",
-  components: {CartCard, NavBar}
+  components: {CartCard, NavBar},
+  mounted() {
+    this.$store.dispatch('setItems')
+  }
 }
 </script>
 

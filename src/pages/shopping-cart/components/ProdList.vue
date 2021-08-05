@@ -1,24 +1,24 @@
 <template>
   <div class="component-container">
     <md-list class="md-triple-line">
-      <prod-item v-for="product in $store.state.productsList"
-      :product="product"></prod-item>
+      <prod-item v-for="(prod, index) in getItems" :key="prod.name"
+                 :product="prod"></prod-item>
     </md-list>
   </div>
 </template>
 
 <script>
 import ProdItem from "./ProdItem";
+import {mapGetters} from "vuex";
+
 export default {
   name: "ProdList",
   components: {ProdItem},
-  // data: function (){
-  //   return {
-  //     productsList: [
-  //       "produs1", "produs2", "produs3"
-  //     ]
-  //   }
-  // }
+  computed: {
+    ...mapGetters({
+        getItems: 'getItems'
+      })
+  },
 }
 </script>
 
