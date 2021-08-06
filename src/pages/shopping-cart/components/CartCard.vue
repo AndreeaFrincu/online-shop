@@ -6,30 +6,26 @@
         <div class="md-title">Shopping Cart</div>
       </md-card-header>
       <md-card-content>
-        <prod-list></prod-list>
+        <cart-list></cart-list>
       </md-card-content>
     </md-card>
   </div>
 </template>
 
 <script>
-import ProdList from "./ProdList";
+import CartList from "./CartList";
 export default {
   name: "CartCard",
-  components: {ProdList}
+  components: {CartList}
 }
 </script>
 
 <style scoped>
 
 .component-container {
-  margin: 20px;
-}
-
-.cart-controls {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  margin: 30px 100px;
+  height: 600px;
+  overflow: hidden;
 }
 
 </style>

@@ -2,76 +2,83 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import _ from "lodash";
 
-Vue.use(Vuex)
-const moduleProdItem = {
-  state: {
-    productsList: []
+const state = {
+  itemsList: []
+}
+const mutations = {
+  setItems(state, value) {
+    //set on store with value
+    state.itemsList = value
   },
-  mutations: {
-    setItems(state, value) {
-      //set on store with value
-      state.productsList = value
-    },
-    setItem(state, value) {
-      _.forEach(state.productsList, (element) => {
-        if (element.name === value.name) {
-          element.quantity = value.quantity
-        }
-      })
-    },
-    removeItem(state, value) {
-      let cloneList = _.cloneDeep(state.productsList)
-      _.remove(cloneList, function(element) {
-        return element.name === value.name;
-      });
-      state.productsList = cloneList
-    }
+  setItem(state, value) {
+    _.forEach(state.itemsList, (element) => {
+      if (element.id === value.id) {
+        element.quantity = value.quantity
+      }
+    })
   },
-  actions: {
-    setItems({commit}) {
-      //retrieve data
-      let data = [
-        {
-          name: 'produs1',
-          quantity: 2222
-        },
-        {
-          name: 'produs2',
-          quantity: 5
-        },
-        {
-          name: 'produs3',
-          quantity: 2
-        }
-      ]
-      //transform data if necessary
-      //set data
-      commit('setItems', data)
-    }
-  },
-  getters: {
-    getItems: state => {
-      return state.productsList
-    }
+  removeItem(state, value) {
+    let cloneList = _.cloneDeep(state.itemsList)
+    _.remove(cloneList, function (element) {
+      return element.id === value.id;
+    });
+    state.itemsList = cloneList
   }
 }
-
-const moduleProdList = {
-  state: {
-    productsList: []
-  },
-  mutations: {},
-  actions: {},
-  getters: {
-    getItems: state => {
-      return state.productsList
-    }
+const actions = {
+  setItems({commit}) {
+    //retrieve data
+    let data = [
+      {
+        id: 1,
+        name: 'produs1',
+        quantity: 2222
+      },
+      {
+        id: 2,
+        name: 'produs2',
+        quantity: 5
+      },
+      {
+        id: 3,
+        name: 'produs3',
+        quantity: 2
+      },
+      {
+        id: 4,
+        name: 'produs4',
+        quantity: 2
+      },
+      {
+        id: 5,
+        name: 'produs5',
+        quantity: 2
+      },
+      {
+        id: 6,
+        name: 'produs6',
+        quantity: 2
+      },
+      {
+        id: 7,
+        name: 'produs7',
+        quantity: 2
+      }
+    ]
+    //transform data if necessary
+    //set data
+    commit('setItems', data)
   }
 }
+const getters = {
+    getItems: state => {
+      return state.itemsList
+    }
+}
 
-export default new Vuex.Store({
-  modules: {
-    prodItem: moduleProdItem,
-    prodList: moduleProdList
-  }
-});
+export default {
+  state,
+  mutations,
+  actions,
+  getters
+}
