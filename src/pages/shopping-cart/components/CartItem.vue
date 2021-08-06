@@ -25,37 +25,31 @@
 </template>
 
 <script>
-import store from "../../../store/shopping-cart/store";
 import _ from "lodash";
 
 export default {
-  name: "ProdItem",
+  name: "CartItem",
   props: {
-    product: {
-      name: {
-        type: String
-      },
-      quantity: {
-        type: Number
-      }
-    }
+    product: {}
   },
   methods: {
     storeIncreaseProd() {
       let cloneProduct = _.cloneDeep(this.product)
       cloneProduct.quantity++;
-      store.commit('setItem', cloneProduct);
+      this.$store.commit('setItem', cloneProduct);
     },
     storeDecreaseProd() {
       let cloneProduct = _.cloneDeep(this.product)
-      if(this.product.quantity > 0) {
+      if(this.product.quantity > 1) {
         cloneProduct.quantity--;
-
+        this.$store.commit('setItem', cloneProduct);
       }
-      store.commit('setItem', cloneProduct);
+      else {
+        this.$store.commit('removeItem', this.product);
+      }
     },
     removeItem() {
-      store.commit('removeItem', this.product);
+      this.$store.commit('removeItem', this.product);
     }
   }
 }
