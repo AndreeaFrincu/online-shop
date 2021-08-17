@@ -16,5 +16,3 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
-
-//vue api query
