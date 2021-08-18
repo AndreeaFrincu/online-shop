@@ -1,7 +1,7 @@
 <template>
   <div class="filter-content">
     <md-checkbox @change="filterProduct" v-model="boolean" class="md-primary">
-      {{ genres.genre }}
+      {{ genre.genre }}
     </md-checkbox>
   </div>
 </template>
@@ -10,17 +10,17 @@
 import _ from "lodash";
 
 export default {
-  name: "GenresFilterList",
+  name: "GenreFilter",
   props: {
-    genres: {}
+    genre: {}
   },
   data: () => ({
     boolean: false
   }),
   methods: {
     filterProduct() {
-      console.log("clicked")
-      this.$emit("input", {genre: this.genres, value: this.boolean})
+      // console.log("clicked")
+      this.$emit("input", {genre: this.genre, value: this.boolean})
     }
   }
 }

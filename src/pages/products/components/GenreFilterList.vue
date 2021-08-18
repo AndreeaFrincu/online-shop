@@ -4,20 +4,21 @@
       <span class="md-subheading">Genres</span>
     </md-toolbar>
     <div class="genres-list">
-      <genres-filter-list
+      <genre-filter
         @input="onGenreSelected"
         v-for="genre in getGenres" :key="genre.id"
-                          :genres="genre"></genres-filter-list>
+                          :genre="genre"></genre-filter>
     </div>
   </div>
 </template>
 
 <script>
+import _ from "lodash"
 import {mapGetters} from "vuex";
-import GenresFilterList from "./GenresFilterList";
+import GenreFilter from "./GenreFilter";
 export default {
-  name: "GenresFilter",
-  components: {GenresFilterList},
+  name: "GenreFilterList",
+  components: {GenreFilter},
   computed: {
     ...mapGetters({
       getGenres: 'getGenres'

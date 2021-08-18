@@ -19,4 +19,14 @@ export default {
 
 <style scoped>
 
+.cart {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-card {
+  display: flex;
+  flex-direction: column;
+}
+
 </style>

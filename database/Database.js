@@ -3,6 +3,7 @@ const products = [
     id: 1,
     title: "book1",
     author: "auth1",
+    price: 27,
     genres: [
       {
         id: 1,
@@ -22,6 +23,7 @@ const products = [
     id: 2,
     title: "book2",
     author: "auth2",
+    price: 15,
     genres: [
       {
         id: 3,
@@ -41,6 +43,7 @@ const products = [
     id: 3,
     title: "book3",
     author: "auth3",
+    price: 10,
     genres: [
       {
         id: 5,
@@ -60,6 +63,7 @@ const products = [
     id: 4,
     title: "book4",
     author: "auth4",
+    price: 50,
     genres: [
       {
         id: 7,
@@ -79,6 +83,7 @@ const products = [
     id: 5,
     title: "book5",
     author: "auth5",
+    price: 35,
     genres: [
       {
         id: 9,

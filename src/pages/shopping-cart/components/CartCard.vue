@@ -1,12 +1,16 @@
 <template>
-  <div class="component-container">
+  <div class="cart-card-content">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <md-card>
       <md-card-header>
-        <div class="md-title">Shopping Cart</div>
+        <span class="md-subheading">Shopping Cart</span>
       </md-card-header>
       <md-card-content>
         <cart-list></cart-list>
+
+        <div id="cart-total">
+          Total price
+        </div>
       </md-card-content>
     </md-card>
   </div>
@@ -22,10 +26,31 @@ export default {
 
 <style scoped>
 
-.component-container {
+.cart-card-content {
+  display: flex;
+  flex-direction: column;
   margin: 30px 100px;
-  height: 600px;
-  overflow: hidden;
+  padding: 20px;
+}
+
+.md-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.md-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+#cart-total {
+  display: flex;
 }
 
 </style>

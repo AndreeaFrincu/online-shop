@@ -8,7 +8,7 @@
 <script>
 import NavBar from "../../components/NavBar";
 import {mapGetters} from "vuex";
-import GenresFilter from "./components/GenresFilter";
+import GenresFilter from "./components/GenreFilterList";
 import ProdFilterWrapper from "./components/ProdFilterWrapper";
 export default {
   name: "Products",

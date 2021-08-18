@@ -1,5 +1,5 @@
 <template>
-  <div class="component-container">
+  <div class="cart-list-content">
     <md-list class="md-triple-line">
       <cart-item v-for="prod in getItems" :key="prod.id"
                  :product="prod"></cart-item>
@@ -23,6 +23,10 @@ export default {
 </script>
 
 <style scoped>
+
+.cart-list-content {
+  height: 400px;
+}
 
 .md-list {
   height: 72%;
