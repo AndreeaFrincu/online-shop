@@ -35,9 +35,6 @@
 
     <div class="pagination-content">
       <paginate
-        v-model="perPage"
-        min="1"
-        :max="length"
         :pageCount="perPage"
         :containerClass="'pagination'"
         :page-class="'page-item'"
@@ -62,17 +59,14 @@ export default {
     ...mapGetters({
       getProducts: 'getProducts'
     }),
-    length() {
-      return Object.keys(this.items).length
-    },
-    pages() {
-      return Math.ceil(this.length / this.perPage)
-    }
+    // perPage() {
+    //
+    // }
   },
   data: ()=> ({
     page: 1,
-    perPage: 5,
-    totalPages: 0,
+    perPage: 1,
+    totalPages: 5,
     pageOfItems: [],
     sortList:[
       {
@@ -114,7 +108,7 @@ export default {
       }
     ],
     sortBy: '',
-    onPage: '',
+    onPage: 0,
     currentPage: '',
     closeOnSelect: true
   }),

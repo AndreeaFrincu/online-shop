@@ -7,7 +7,7 @@ const state = {
   genresList: [],
   selectedGenreList: [],
   sortBy: '',
-  onPage: ''
+  onPage: 5
 }
 const mutations = {
   setProducts(state, value) {
@@ -159,7 +159,7 @@ const getters = {
 
     /** Case: Products not filtered, not sorted, but on the page x products */
     else if(state.selectedGenreList.length === 0 && state.sortBy === '' && state.onPage !== 0){
-      return state.productsList.slice((2 - 1) * state.onPage, 2 * state.onPage)
+      return state.productsList.slice((1 - 1) * state.onPage, 1 * state.onPage)
     }
   },
   getGenres: state => {
