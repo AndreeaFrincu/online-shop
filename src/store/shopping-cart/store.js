@@ -1,5 +1,3 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
 import _ from "lodash";
 
 const state = {
@@ -31,40 +29,48 @@ const actions = {
     let data = [
       {
         id: 1,
-        name: 'produs1',
-        quantity: 2222
+        name: 'product1',
+        quantity: 2222,
+        price: 10
       },
       {
         id: 2,
-        name: 'produs2',
-        quantity: 5
+        name: 'product2',
+        quantity: 5,
+        price: 11
       },
       {
         id: 3,
-        name: 'produs3',
-        quantity: 2
+        name: 'product3',
+        quantity: 2,
+        price: 12
       },
       {
         id: 4,
-        name: 'produs4',
-        quantity: 2
+        name: 'product4',
+        quantity: 2,
+        price: 13
       },
       {
         id: 5,
-        name: 'produs5',
-        quantity: 2
+        name: 'product5',
+        quantity: 2,
+        price: 14
       },
       {
         id: 6,
-        name: 'produs6',
-        quantity: 2
+        name: 'product6',
+        quantity: 2,
+        price: 15
       },
       {
         id: 7,
-        name: 'produs7',
-        quantity: 2
+        name: 'product7',
+        quantity: 2,
+        price: 16
       }
     ]
+
     //transform data if necessary
     //set data
     commit('setItems', data)
