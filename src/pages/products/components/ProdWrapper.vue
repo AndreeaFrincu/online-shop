@@ -33,66 +33,91 @@
                :product="prod"></product>
     </div>
 
+    <div class="pagination-content">
+      <paginate
+        v-model="perPage"
+        min="1"
+        :max="length"
+        :pageCount="perPage"
+        :containerClass="'pagination'"
+        :page-class="'page-item'"
+        :current-page="page"
+        :max-pages="totalPages"
+        :clickHandler="changePage"
+      ></paginate>
+    </div>
+
   </div>
 </template>
 
 <script>
 import Product from "./Product";
+import Paginate from 'vuejs-paginate'
 import {mapGetters} from "vuex";
+
 export default {
   name: "ProdWrapper",
-  components: {Product},
+  components: {Product, Paginate},
   computed: {
     ...mapGetters({
       getProducts: 'getProducts'
-    })
-  },
-  data () {
-    return {
-      sortList:[
-        {
-          id: 1,
-          name:'Price (Ascending)',
-          value: '+price'
-        },
-        {
-          id: 2,
-          name:'Price (Descending)',
-          value: '-price'
-        },
-        {
-          id: 3,
-          name:'Alphabetic (Ascending)',
-          value: '+alpha'
-        },
-        {
-          id: 4,
-          name:'Alphabetic (Descending)',
-          value: '-alpha'
-        }
-      ],
-      pageList:[
-        {
-          id: 1,
-          name:'30',
-          value: 30
-        },
-        {
-          id: 2,
-          name:'60',
-          value: 60
-        },
-        {
-          id: 3,
-          name:'90',
-          value: 90
-        }
-      ],
-      sortBy: '',
-      onPage: '',
-      closeOnSelect: true
+    }),
+    length() {
+      return Object.keys(this.items).length
+    },
+    pages() {
+      return Math.ceil(this.length / this.perPage)
     }
   },
+  data: ()=> ({
+    page: 1,
+    perPage: 5,
+    totalPages: 0,
+    pageOfItems: [],
+    sortList:[
+      {
+        id: 1,
+        name:'Price (Ascending)',
+        value: '+price'
+      },
+      {
+        id: 2,
+        name:'Price (Descending)',
+        value: '-price'
+      },
+      {
+        id: 3,
+        name:'Alphabetic (Ascending)',
+        value: '+alpha'
+      },
+      {
+        id: 4,
+        name:'Alphabetic (Descending)',
+        value: '-alpha'
+      }
+    ],
+    pageList:[
+      {
+        id: 1,
+        name:'1',
+        value: 1
+      },
+      {
+        id: 2,
+        name:'2',
+        value: 2
+      },
+      {
+        id: 3,
+        name:'3',
+        value: 3
+      }
+    ],
+    sortBy: '',
+    onPage: '',
+    currentPage: '',
+    closeOnSelect: true
+  }),
   methods: {
     sortProduct(sortItem) {
       this.sortBy = sortItem.value
@@ -101,12 +126,18 @@ export default {
     pageProducts(pageNumber) {
       this.onPage = pageNumber.value
       this.$emit("paging", this.onPage)
+    },
+    changePage (pageNum) {
+      console.log(pageNum)
     }
   }
 }
+
+
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css?family=Material+Icons");
 
 .prod-wrapper {
   padding: 20px;
@@ -139,15 +170,36 @@ export default {
   display: flex;
 }
 
-.outer {
+.pagination-content {
   display: flex;
-  align-items: stretch;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
-.inner {
-  width: 400px;
-  display: flex;
+.pagination > li:first-child > a {
+  margin-left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.pagination > li > a {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #337ab7;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.pagination > .active > a {
+  z-index: 2;
+  color: #fff;
+  cursor: default;
+  background-color: #337ab7;
+  border-color: #337ab7;
 }
 
 </style>
