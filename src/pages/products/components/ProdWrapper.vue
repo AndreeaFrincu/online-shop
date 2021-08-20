@@ -22,7 +22,7 @@
 
           <md-menu-content>
             <md-menu-item @click="pageProducts(pageNumber)"
-                          v-for="pageNumber in pageList">{{ pageNumber.name }}</md-menu-item>
+                          v-for="pageNumber in onPageSortList">{{ pageNumber.name }}</md-menu-item>
           </md-menu-content>
         </md-menu>
       </div>
@@ -35,11 +35,11 @@
 
     <div class="pagination-content">
       <paginate
-        :pageCount="perPage"
+        v-model="pagesList[0]"
+        :initial-page="5"
+        :pageCount="getTotalPages"
         :containerClass="'pagination'"
         :page-class="'page-item'"
-        :current-page="page"
-        :max-pages="totalPages"
         :clickHandler="changePage"
       ></paginate>
     </div>
@@ -57,16 +57,13 @@ export default {
   components: {Product, Paginate},
   computed: {
     ...mapGetters({
-      getProducts: 'getProducts'
-    }),
-    // perPage() {
-    //
-    // }
+      getProducts: 'getProducts',
+      getTotalPages: 'getTotalPages',
+      getTotalProducts: 'getTotalProducts'
+    })
   },
   data: ()=> ({
-    page: 1,
-    perPage: 1,
-    totalPages: 5,
+    paginate: '',
     pageOfItems: [],
     sortList:[
       {
@@ -90,7 +87,7 @@ export default {
         value: '-alpha'
       }
     ],
-    pageList:[
+    onPageSortList:[
       {
         id: 1,
         name:'1',
@@ -109,7 +106,9 @@ export default {
     ],
     sortBy: '',
     onPage: 0,
-    currentPage: '',
+    totalPages: 5,
+    pagesList: [],
+    currentPageIndex: 0,
     closeOnSelect: true
   }),
   methods: {
@@ -119,9 +118,34 @@ export default {
     },
     pageProducts(pageNumber) {
       this.onPage = pageNumber.value
-      this.$emit("paging", this.onPage)
+      this.currentPageIndex = 0
+
+      const productsPerPage = this.onPage
+      const totalProducts = this.getTotalProducts
+      let totalPages = this.totalPages
+
+      if(totalProducts % productsPerPage !== 0) {
+        totalPages = Math.floor(totalProducts / productsPerPage) + 1
+        console.log('total pages', totalPages)
+        console.log('number of products', totalProducts)
+        console.log('number of products on page', productsPerPage)
+      }
+      else{
+        totalPages = Math.floor(totalProducts / productsPerPage)
+        console.log('total pages', totalPages)
+        console.log('number of products', totalProducts)
+        console.log('number of products on page', productsPerPage)
+      }
+
+      this.pagesList =  [...Array(totalPages).keys()]
+      this.$emit('productsOnPage', this.onPage)
+      this.$emit('totalPages', totalPages)
+      this.$emit('pagesList', this.pagesList)
+      this.$emit('resetPageIndex', this.currentPageIndex)
     },
-    changePage (pageNum) {
+    changePage(pageNum) {
+      const pageIndex = pageNum - 1
+      this.$emit('currentPageIndex', pageIndex)
       console.log(pageNum)
     }
   }

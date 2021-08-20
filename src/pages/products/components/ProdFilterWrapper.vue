@@ -4,8 +4,12 @@
       <genres-filter></genres-filter>
       <prod-wrapper
       @sorting="onSortBySelected"
-      @paging="onPageSelected"
-      ></prod-wrapper>
+      @productsOnPage="onPageSelected"
+      @totalPages="sendTotalPages"
+      @pagesList="sendPagesList"
+      @currentPageIndex="setCurrentPageIndex"
+      @resetPageIndex="onResetPageIndex">
+      </prod-wrapper>
     </md-card>
   </div>
 </template>
@@ -23,10 +27,23 @@ export default {
     },
     onPageSelected(onPage) {
       this.$store.commit('setOnPage', onPage)
+    },
+    sendTotalPages(totalPages) {
+      this.$store.commit('setTotalPages', totalPages)
+    },
+    sendPagesList(pagesList) {
+      this.$store.commit('setPagesList', pagesList)
+    },
+    setCurrentPageIndex(pageIndex) {
+      this.$store.commit('setCurrentPageIndex', pageIndex)
+    },
+    onResetPageIndex(defaultPageIndex) {
+      this.$store.commit('setDefaultPageIndex', defaultPageIndex)
     }
   }
 }
 </script>
+
 
 <style scoped>
 
