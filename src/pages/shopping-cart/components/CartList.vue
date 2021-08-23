@@ -1,22 +1,22 @@
 <template>
-  <div class="cart-list-content">
-    <md-list class="md-triple-line">
-      <cart-item v-for="prod in getItems" :key="prod.id"
-                 :product="prod"></cart-item>
-    </md-list>
-  </div>
+  <md-card-content>
+    <div class="cart-list-content">
+      <cart-product id="cart-product" v-for="prod in getItems" :key="prod.id"
+      :product="prod"></cart-product>
+    </div>
+  </md-card-content>
 </template>
 
 <script>
 import {mapGetters} from "vuex";
-import CartItem from "./CartItem";
+import CartProduct from "./CartProduct";
 
 export default {
   name: "CartList",
-  components: {CartItem},
+  components: {CartProduct},
   computed: {
     ...mapGetters({
-        getItems: 'getItems'
+        getItems: 'cart/getItems'
       })
   }
 }
@@ -26,13 +26,15 @@ export default {
 
 .cart-list-content {
   height: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .md-list {
-  height: 72%;
-  width: 100%;
-  overflow-y: auto;
-  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .md-list::-webkit-scrollbar {

@@ -2,25 +2,20 @@
   <div class="cart-card-content">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <md-card>
-      <md-card-header>
-        <span class="md-subheading">Shopping Cart</span>
-      </md-card-header>
-      <md-card-content>
-        <cart-list></cart-list>
-
-        <div id="cart-total">
-          Total price
-        </div>
-      </md-card-content>
+      <cart-toolbar></cart-toolbar>
+      <cart-list></cart-list>
+      <cart-total></cart-total>
     </md-card>
   </div>
 </template>
 
 <script>
 import CartList from "./CartList";
+import CartToolbar from "./CartToolbar";
+import CartTotal from "./CartTotal";
 export default {
   name: "CartCard",
-  components: {CartList}
+  components: {CartTotal, CartToolbar, CartList}
 }
 </script>
 
@@ -29,28 +24,19 @@ export default {
 .cart-card-content {
   display: flex;
   flex-direction: column;
-  margin: 30px 100px;
-  padding: 20px;
+  width: 90%;
+  align-self: center;
+  margin-top: 20px;
 }
 
 .md-card {
   display: flex;
+  align-items: center;
   flex-direction: column;
 }
 
 .md-card-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.cart-list {
-  display: flex;
-  flex-direction: column;
-  overflow-y: scroll;
-}
-
-#cart-total {
-  display: flex;
+  width: 97%;
 }
 
 </style>

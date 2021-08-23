@@ -4,6 +4,7 @@ const products = [
     title: "a",
     author: "auth1",
     price: 27,
+    quantity: 1,
     genres: [
       {
         id: 1,
@@ -24,6 +25,7 @@ const products = [
     title: "b",
     author: "auth2",
     price: 15,
+    quantity: 1,
     genres: [
       {
         id: 3,
@@ -44,6 +46,7 @@ const products = [
     title: "c",
     author: "auth3",
     price: 10,
+    quantity: 1,
     genres: [
       {
         id: 5,
@@ -64,6 +67,7 @@ const products = [
     title: "d",
     author: "auth4",
     price: 50,
+    quantity: 1,
     genres: [
       {
         id: 7,
@@ -84,6 +88,7 @@ const products = [
     title: "e",
     author: "auth5",
     price: 35,
+    quantity: 1,
     genres: [
       {
         id: 9,

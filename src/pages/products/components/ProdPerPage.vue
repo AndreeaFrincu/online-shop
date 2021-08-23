@@ -1,0 +1,51 @@
+<template>
+  <md-menu class="sort-prod" md-size="medium" md-align-trigger>
+    <md-button class="sort-prod-btn" md-menu-trigger>
+      On the page
+    </md-button>
+
+    <md-menu-content>
+      <md-menu-item @click="pageProducts(pageNumber)"
+                    v-for="pageNumber in onPageSortList">{{ pageNumber.name }}</md-menu-item>
+    </md-menu-content>
+  </md-menu>
+</template>
+
+<script>
+export default {
+  name: "ProdPerPage",
+  data: () => ({
+    onPageSortList:[
+      {
+        id: 1,
+        name:'1',
+        value: 1
+      },
+      {
+        id: 2,
+        name:'2',
+        value: 2
+      },
+      {
+        id: 3,
+        name:'3',
+        value: 3
+      }
+    ],
+  }),
+  methods: {
+    pageProducts(pageNumber) {
+      this.$emit('productsOnPage', pageNumber.value)
+      this.$store.commit('products/setCurrentPage', 1)
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+.sort-prod-btn {
+  text-transform: capitalize;
+}
+
+</style>

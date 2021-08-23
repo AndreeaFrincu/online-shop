@@ -12,7 +12,7 @@ export default {
   name: "Cart",
   components: {CartCard, NavBar},
   mounted() {
-    this.$store.dispatch('setItems')
+    this.$store.dispatch('cart/setItems')
   }
 }
 </script>
@@ -20,11 +20,6 @@ export default {
 <style scoped>
 
 .cart {
-  display: flex;
-  flex-direction: column;
-}
-
-.cart-card {
   display: flex;
   flex-direction: column;
 }
