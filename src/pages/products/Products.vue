@@ -1,5 +1,5 @@
 <template>
-  <div class="container-content">
+  <div class="products-page-content">
     <nav-bar></nav-bar>
     <prod-filter-wrapper></prod-filter-wrapper>
   </div>
@@ -14,7 +14,7 @@ export default {
   name: "Products",
   components: {ProdFilterWrapper, NavBar},
   mounted() {
-    this.$store.dispatch('setProducts')
+    this.$store.dispatch('products/setProducts')
   },
   computed: {
     ...mapGetters({
@@ -25,7 +25,7 @@ export default {
 
 <style scoped>
 
-.container-content {
+.products-page-content {
   display: flex;
   justify-content: center;
   flex-direction: column;

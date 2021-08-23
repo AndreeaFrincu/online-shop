@@ -1,6 +1,10 @@
 <template>
   <div class="prod">
-    <md-content class="md-primary">{{ product.title }}</md-content>
+    <md-content class="md-primary product-content">
+      <span id="prod-title">{{ product.title }}</span>
+      <md-button @click="addProdToCart" class="md-raised add-btn">
+        Add to cart</md-button>
+    </md-content>
   </div>
 </template>
 
@@ -11,7 +15,9 @@ export default {
     product: {}
   },
   methods: {
-
+    addProdToCart() {
+      this.$emit("input", this.product)
+    }
   }
 }
 </script>
@@ -27,7 +33,18 @@ export default {
   width: 200px;
   height: 200px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prod-controls {
+  display: flex;
+  flex-direction: row;
+}
+
+.add-btn {
+  text-transform: none;
 }
 
 </style>

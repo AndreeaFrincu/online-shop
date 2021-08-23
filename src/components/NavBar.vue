@@ -1,5 +1,5 @@
 <template>
-  <div class="component-container">
+  <div class="nav-bar-content">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <md-toolbar class="md-primary">
@@ -74,6 +74,12 @@ export default {
 </script>
 
 <style scoped>
+
+.nav-bar-content {
+  /*position: fixed;*/
+  /*top: 0;*/
+  /*width: 100%;*/
+}
 
 .drawer-button-text {
   display: flex;

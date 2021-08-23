@@ -1,4 +1,5 @@
 import _ from "lodash";
+import Database from "../../../database/Database";
 
 const state = {
   itemsList: []
@@ -26,63 +27,22 @@ const mutations = {
 const actions = {
   setItems({commit}) {
     //retrieve data
-    let data = [
-      {
-        id: 1,
-        name: 'product1',
-        quantity: 2222,
-        price: 10
-      },
-      {
-        id: 2,
-        name: 'product2',
-        quantity: 5,
-        price: 11
-      },
-      {
-        id: 3,
-        name: 'product3',
-        quantity: 2,
-        price: 12
-      },
-      {
-        id: 4,
-        name: 'product4',
-        quantity: 2,
-        price: 13
-      },
-      {
-        id: 5,
-        name: 'product5',
-        quantity: 2,
-        price: 14
-      },
-      {
-        id: 6,
-        name: 'product6',
-        quantity: 2,
-        price: 15
-      },
-      {
-        id: 7,
-        name: 'product7',
-        quantity: 2,
-        price: 16
-      }
-    ]
+    // let products = Database.products
 
     //transform data if necessary
     //set data
-    commit('setItems', data)
+    // commit('setItems', products)
   }
 }
 const getters = {
-    getItems: state => {
-      return state.itemsList
-    }
+  getItems: state => {
+    let result = _.cloneDeep(state.itemsList)
+    return result
+  }
 }
 
 export default {
+  namespaced: true,
   state,
   mutations,
   actions,

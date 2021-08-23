@@ -21,7 +21,7 @@ export default {
   components: {GenreFilter},
   computed: {
     ...mapGetters({
-      getGenres: 'getGenres'
+      getGenres: 'products/getGenres'
     })
   },
   methods: {
@@ -33,7 +33,7 @@ export default {
       else {
         genreList = genreList.filter(item => item.id !== genre.id)
       }
-      this.$store.commit('setSelectedGenreList', genreList)
+      this.$store.commit('products/setSelectedGenreList', genreList)
     }
   }
 }
