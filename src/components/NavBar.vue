@@ -10,7 +10,8 @@
 
       <span class="md-title">shop</span>
       <div class="md-toolbar-section-end">
-        <md-button @click="showSidepanel = true">
+        <nav-bar-cart></nav-bar-cart>
+        <md-button class="nav-bar-btn" @click="showSidepanel = true">
           <md-icon class="fa fa-info-circle"></md-icon>
         </md-button>
       </div>
@@ -46,17 +47,6 @@
           </span>
         </md-list-item>
 
-        <md-list-item>
-          <md-icon class="fa fa-shopping-cart"></md-icon>
-          <span class="md-list-item-text">
-            <router-link id="link-cart" to="/cart">
-              <md-button class="drawer-button">
-                <p class="drawer-button-text">Shopping Cart</p>
-              </md-button>
-            </router-link>
-          </span>
-        </md-list-item>
-
       </md-list>
     </md-drawer>
 
@@ -64,8 +54,10 @@
 </template>
 
 <script>
+import NavBarCart from "./nav-bar-components/NavBarCart";
 export default {
   name: "NavBar",
+  components: {NavBarCart},
   data: () => ({
     showNavigation: false,
     showSidepanel: false
@@ -79,6 +71,10 @@ export default {
   /*position: fixed;*/
   /*top: 0;*/
   /*width: 100%;*/
+}
+
+.nav-bar-btn {
+  padding: 0;
 }
 
 .drawer-button-text {

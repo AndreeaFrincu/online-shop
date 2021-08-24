@@ -13,6 +13,7 @@ const mutations = {
     _.forEach(state.itemsList, (element) => {
       if (element.id === value.id) {
         element.quantity = value.quantity
+        element.price = value.price
       }
     })
   },
@@ -22,6 +23,9 @@ const mutations = {
       return element.id === value.id;
     });
     state.itemsList = cloneList
+  },
+  setBadge(state, value) {
+
   }
 }
 const actions = {
@@ -38,6 +42,12 @@ const getters = {
   getItems: state => {
     let result = _.cloneDeep(state.itemsList)
     return result
+  },
+  getTotalPrice: state => {
+    let totalPrice = 0
+    _.forEach(state.itemsList, (element) => {
+      totalPrice += element.price
+    })
   }
 }
 

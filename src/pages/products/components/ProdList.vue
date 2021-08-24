@@ -23,9 +23,22 @@ export default {
   methods: {
     onProductAdded(product) {
       let prodList = _.cloneDeep(this.$store.state.cart.itemsList)
-      if(product.title) {
-        prodList.push(product)
-      }
+      let index = prodList.length
+      const price = product.price
+      const prod = prodList.find(elem => {
+        return elem.title === product.title})
+
+      console.log(prod)
+
+      // if(prodList.some(prod => prod.id === product.id)) {
+      //
+      //   prodList[index - 1].quantity++
+      //   // prodList[index - 1].price = Math.floor(price/(prodList[product.id - 1].quantity - 1)) * prodList[product.id - 1].quantity
+      //   console.log(product.id, product.title)
+      // }
+      // else {
+      //   prodList.push(product)
+      // }
       this.$store.commit('cart/setItems', prodList)
     }
   }

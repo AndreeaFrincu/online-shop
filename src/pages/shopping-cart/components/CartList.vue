@@ -1,8 +1,9 @@
 <template>
   <md-card-content>
     <div class="cart-list-content">
-      <cart-product id="cart-product" v-for="prod in getItems" :key="prod.id"
+      <cart-product v-if="checkEmptyCart>0" id="cart-product" v-for="prod in getItems" :key="prod.id"
       :product="prod"></cart-product>
+      <p class="cart-text" v-if="checkEmptyCart===0">Empty! You have nothing in your cart yet.</p>
     </div>
   </md-card-content>
 </template>
@@ -17,7 +18,10 @@ export default {
   computed: {
     ...mapGetters({
         getItems: 'cart/getItems'
-      })
+    }),
+    checkEmptyCart: function() {
+      return this.getItems.length
+    }
   }
 }
 </script>
@@ -25,29 +29,29 @@ export default {
 <style scoped>
 
 .cart-list-content {
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.md-list {
+  height: 300px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
 }
 
-.md-list::-webkit-scrollbar {
+.cart-list-content::-webkit-scrollbar {
   width: 1em;
 }
 
-.md-list::-webkit-scrollbar-track {
+.cart-list-content::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
 
-.md-list::-webkit-scrollbar-thumb {
+.cart-list-content::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
+}
+
+.cart-text {
+  display: flex;
+  justify-content: center;
 }
 
 </style>
