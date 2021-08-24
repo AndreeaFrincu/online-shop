@@ -30,8 +30,11 @@ export default {
   methods: {
     decreaseQuantity() {
       let cloneProduct = _.cloneDeep(this.product)
+      const currentPrice = cloneProduct.price
+      const initialPrice = cloneProduct.price / cloneProduct.quantity
       if(this.product.quantity > 1) {
-        cloneProduct.quantity--;
+        cloneProduct.quantity--
+        cloneProduct.price = currentPrice - initialPrice
         this.$store.commit('cart/setItem', cloneProduct)
       }
       else {
@@ -40,9 +43,10 @@ export default {
     },
     increaseQuantity() {
       let cloneProduct = _.cloneDeep(this.product)
-      cloneProduct.quantity++;
+      const price = cloneProduct.price
+      cloneProduct.quantity++
+      cloneProduct.price = Math.floor(price/(cloneProduct.quantity - 1)) * cloneProduct.quantity
       this.$store.commit('cart/setItem', cloneProduct)
-      this.$store.commit('cart/setPrice', cloneProduct)
     },
     removeItem() {
       this.$store.commit('cart/removeItem', this.product)

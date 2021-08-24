@@ -1,14 +1,20 @@
 <template>
   <md-card-content>
     <div id="cart-total">
-      Total PRICE
+      Total PRICE: {{getTotalPrice}}
     </div>
   </md-card-content>
 </template>
 
 <script>
+import {mapGetters} from "vuex";
 export default {
-  name: "CartTotal"
+  name: "CartTotal",
+  computed: {
+    ...mapGetters({
+      getTotalPrice: 'cart/getTotalPrice'
+    })
+  }
 }
 </script>
 
