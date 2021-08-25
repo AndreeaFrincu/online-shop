@@ -81,6 +81,9 @@ const getters = {
   },
   getGenres: state => {
     return state.genresList
+  },
+  getSelectedGenreList: state => {
+    return state.selectedGenreList.map(obj => obj.genre)
   }
 }
 

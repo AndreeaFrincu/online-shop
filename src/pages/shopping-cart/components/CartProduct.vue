@@ -1,8 +1,8 @@
 <template>
   <div class="cart-product">
     <span>Product {{ product.title }}</span>
-    <span>Quantity {{ product.quantity }}</span>
-    <span>Price {{ product.price }}</span>
+    <span>x {{ product.quantity }}</span>
+    <span>{{ product.price }} $</span>
     <div class="cart-controls">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -12,7 +12,16 @@
       <md-button @click="increaseQuantity" class="md-icon-button md-list-action">
         <md-icon class="fa fa-plus-circle"></md-icon>
       </md-button>
-      <md-button @click="removeItem" class="md-icon-button md-list-action">
+      <md-dialog-confirm
+        :md-active.sync="active"
+        md-title="Are you sure you want to remove the item from your cart?"
+        md-content="Choose yes or no"
+        md-confirm-text="Yes"
+        md-cancel-text="No"
+        @md-cancel="onNo"
+        @md-confirm="onYes" />
+
+      <md-button @click="onYes" class="md-icon-button md-list-action">
         <md-icon class="fa fa-trash"></md-icon>
       </md-button>
     </div>
@@ -24,6 +33,9 @@ import _ from "lodash";
 
 export default {
   name: "CartProduct",
+  data: () => ({
+    active: false
+  }),
   props: {
     product: {}
   },
@@ -38,7 +50,7 @@ export default {
         this.$store.commit('cart/setItem', cloneProduct)
       }
       else {
-        this.$store.commit('cart/removeItem', this.product)
+        this.active = true
       }
     },
     increaseQuantity() {
@@ -48,8 +60,11 @@ export default {
       cloneProduct.price = Math.floor(price/(cloneProduct.quantity - 1)) * cloneProduct.quantity
       this.$store.commit('cart/setItem', cloneProduct)
     },
-    removeItem() {
+    onYes() {
       this.$store.commit('cart/removeItem', this.product)
+    },
+    onNo() {
+
     }
   }
 }
