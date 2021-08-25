@@ -2,7 +2,7 @@
   <div class="nav-bar-cart">
     <router-link id="link-cart" to="/cart">
       <md-list-item id="list">
-        <md-button id="cart-btn" class="nav-bar-btn" @click="showSidepanel = true">
+        <md-button id="cart-btn" class="nav-bar-btn">
           <md-icon class="fa fa-shopping-cart"></md-icon>
         </md-button>
         <md-badge id="badge" v-if="changeBadge>0" :md-content="changeBadge"></md-badge>
@@ -33,15 +33,15 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 0;
+  margin: 0;
 }
 
 #cart-btn {
-  margin-left: 0;
-  padding: 0;
+  position: static;
 }
 
 #badge {
-  margin-left: -25px;
+  margin-left: -30px;
   margin-top: -20px;
 }
 

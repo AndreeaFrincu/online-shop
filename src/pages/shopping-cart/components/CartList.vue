@@ -1,9 +1,17 @@
 <template>
-  <md-card-content>
+  <md-card-content class="card-content">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <div class="cart-list-content">
-      <cart-product v-if="checkEmptyCart>0" id="cart-product" v-for="prod in getItems" :key="prod.id"
+      <cart-product v-if="checkEmptyCart > 0" id="cart-product" v-for="prod in getItems" :key="prod.id"
       :product="prod"></cart-product>
-      <p class="cart-text" v-if="checkEmptyCart===0">Empty! You have nothing in your cart yet.</p>
+      <md-empty-state v-if="checkEmptyCart === 0"
+        md-rounded
+        class="md-accent"
+        md-icon="sentiment_dissatisfied"
+        md-label="Empty"
+        md-description="You have nothing in your cart yet.
+        Click on 'Continue Shopping to add items.">
+      </md-empty-state>
     </div>
   </md-card-content>
 </template>
@@ -28,8 +36,11 @@ export default {
 
 <style scoped>
 
+.card-content{
+  height: 80%;
+}
+
 .cart-list-content {
-  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

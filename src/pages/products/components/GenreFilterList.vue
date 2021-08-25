@@ -26,9 +26,11 @@ export default {
   },
   methods: {
     onGenreSelected({value, genre}){
+      this.$emit("filteredByGenre", genre)
       let genreList = _.cloneDeep(this.$store.state.products.selectedGenreList)
       if(value){
         genreList.push(genre)
+        console.log("genre filtered by: ", genre)
       }
       else {
         genreList = genreList.filter(item => item.id !== genre.id)

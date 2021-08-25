@@ -1,7 +1,7 @@
 <template>
   <md-card-content>
     <div id="cart-total">
-      Total PRICE: {{getTotalPrice}}
+      Total price: {{getTotalPrice}}$
     </div>
   </md-card-content>
 </template>
@@ -19,5 +19,10 @@ export default {
 </script>
 
 <style scoped>
+
+#cart-total {
+  font-size: 20px;
+  color: #2e7bff;
+}
 
 </style>

@@ -1,10 +1,16 @@
 <template>
   <div class="cart-card-content">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <md-card>
+    <md-card class="cart-card">
       <cart-toolbar></cart-toolbar>
       <cart-list></cart-list>
-      <cart-total></cart-total>
+      <div class="bottom-cart">
+        <cart-total v-if="getTotalPrice>0"></cart-total>
+        <md-button class="control-btn md-raised md-primary" v-if="getTotalPrice>0">Checkout</md-button>
+        <router-link id="link-products" to="/products">
+          <md-button id="continue-sh" class="control-btn md-raised md-primary">Continue Shopping</md-button>
+        </router-link>
+      </div>
     </md-card>
   </div>
 </template>
@@ -13,9 +19,15 @@
 import CartList from "./CartList";
 import CartToolbar from "./CartToolbar";
 import CartTotal from "./CartTotal";
+import {mapGetters} from "vuex";
 export default {
   name: "CartCard",
-  components: {CartTotal, CartToolbar, CartList}
+  components: {CartTotal, CartToolbar, CartList},
+  computed: {
+    ...mapGetters({
+      getTotalPrice: 'cart/getTotalPrice'
+    })
+  }
 }
 </script>
 
@@ -29,6 +41,10 @@ export default {
   margin-top: 20px;
 }
 
+.cart-card {
+  height: 600px;
+}
+
 .md-card {
   display: flex;
   align-items: center;
@@ -37,6 +53,19 @@ export default {
 
 .md-card-content {
   width: 97%;
+}
+
+.bottom-cart {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  padding-bottom: 20px;
+}
+
+.control-btn {
+  text-transform: capitalize;
+  font-size: 17px;
 }
 
 </style>

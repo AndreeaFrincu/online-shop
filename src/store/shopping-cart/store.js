@@ -45,9 +45,11 @@ const getters = {
   },
   getTotalPrice: state => {
     let totalPrice = 0
-    _.forEach(state.itemsList, (element) => {
+    let listOfItems = _.cloneDeep(state.itemsList)
+    _.forEach(listOfItems, (element) => {
       totalPrice += element.price
     })
+    return totalPrice
   }
 }
 

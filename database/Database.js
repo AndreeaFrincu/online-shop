@@ -5,6 +5,7 @@ const products = [
     author: "auth1",
     price: 27,
     quantity: 1,
+    cartPosition:0,
     genres: [
       {
         id: 1,
@@ -26,6 +27,7 @@ const products = [
     author: "auth2",
     price: 15,
     quantity: 1,
+    cartPosition:0,
     genres: [
       {
         id: 3,
@@ -47,6 +49,7 @@ const products = [
     author: "auth3",
     price: 10,
     quantity: 1,
+    cartPosition:0,
     genres: [
       {
         id: 5,
@@ -68,6 +71,7 @@ const products = [
     author: "auth4",
     price: 50,
     quantity: 1,
+    cartPosition:0,
     genres: [
       {
         id: 7,
@@ -89,6 +93,7 @@ const products = [
     author: "auth5",
     price: 35,
     quantity: 1,
+    cartPosition:0,
     genres: [
       {
         id: 9,

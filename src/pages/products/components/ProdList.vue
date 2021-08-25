@@ -21,24 +21,26 @@ export default {
     })
   },
   methods: {
+    /** When 'Add to cart' is clicked */
     onProductAdded(product) {
       let prodList = _.cloneDeep(this.$store.state.cart.itemsList)
       let index = prodList.length
-      const price = product.price
-      const prod = prodList.find(elem => {
-        return elem.title === product.title})
+      let currentPrice = product.price
+      const initialPrice = product.price / product.quantity
 
-      console.log(prod)
-
-      // if(prodList.some(prod => prod.id === product.id)) {
-      //
-      //   prodList[index - 1].quantity++
-      //   // prodList[index - 1].price = Math.floor(price/(prodList[product.id - 1].quantity - 1)) * prodList[product.id - 1].quantity
-      //   console.log(product.id, product.title)
-      // }
-      // else {
-      //   prodList.push(product)
-      // }
+      /** If the product is already in the cart (list of items in the store),
+       * increase quantity and price */
+      if(prodList.some(prod => prod.id === product.id)) {
+        prodList[product.cartPosition].quantity++
+        currentPrice = initialPrice * prodList[product.cartPosition].quantity
+        prodList[product.cartPosition].price = currentPrice
+      }
+      /** If the product is not in the cart, add it (in the list of items) */
+      else {
+        product.cartPosition = index
+        prodList.push(product)
+      }
+      /** Update the list of items in store */
       this.$store.commit('cart/setItems', prodList)
     }
   }
@@ -58,7 +60,7 @@ export default {
 #product {
   width: 200px;
   height: 200px;
-  margin: 20px;
+  margin: 20px 20px 0 20px;
   align-items: center;
   display: flex;
 }
