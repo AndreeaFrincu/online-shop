@@ -18,16 +18,21 @@ export default {
     onPageSortList:[
       {
         id: 1,
+        name:'All products',
+        value: null
+      },
+      {
+        id: 2,
         name:'1',
         value: 1
       },
       {
-        id: 2,
+        id: 3,
         name:'2',
         value: 2
       },
       {
-        id: 3,
+        id: 4,
         name:'3',
         value: 3
       }
@@ -35,6 +40,9 @@ export default {
   }),
   methods: {
     pageProducts(pageNumber) {
+      if(pageNumber.value === null) {
+        pageNumber.value = this.$store.getters['products/getProducts'].length
+      }
       this.$emit('productsOnPage', pageNumber.value)
       this.$store.commit('products/setCurrentPage', 1)
     }

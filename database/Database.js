@@ -108,6 +108,28 @@ const products = [
         genre: "Historical Fiction"
       }
     ]
+  },
+  {
+    id: 6,
+    title: "f",
+    author: "auth6",
+    price: 21,
+    quantity: 1,
+    cartPosition:0,
+    genres: [
+      {
+        id: 10,
+        genre: "Thriller"
+      },
+      {
+        id: 1,
+        genre: "Historical Fiction"
+      },
+      {
+        id: 2,
+        genre: "Comedy"
+      }
+    ]
   }
 ]
 

@@ -6,7 +6,7 @@ const state = {
   genresList: [],
   selectedGenreList: [],
   sortBy: null,
-  perPage: 0,
+  perPage: null,
   currentPage: 1
 }
 const mutations = {
@@ -68,6 +68,8 @@ const getters = {
       })
     }
 
+    //set per page
+    state.perPage = result.length
     return result
   },
   getProductsPaginated: (state, getters) => {
@@ -82,7 +84,7 @@ const getters = {
   getGenres: state => {
     return state.genresList
   },
-  getSelectedGenreList: state => {
+  getSelectedGenreName: state => {
     return state.selectedGenreList.map(obj => obj.genre)
   }
 }
