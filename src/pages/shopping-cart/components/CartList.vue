@@ -10,7 +10,7 @@
         md-icon="sentiment_dissatisfied"
         md-label="Empty"
         md-description="You have nothing in your cart yet.
-        Click on 'Continue Shopping to add items.">
+        Click on 'Continue Shopping' to add items.">
       </md-empty-state>
     </div>
   </md-card-content>

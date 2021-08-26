@@ -25,8 +25,7 @@ export default {
 <style scoped>
 
 .prod {
-  flex-grow: 4;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .md-content {

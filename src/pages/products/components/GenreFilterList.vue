@@ -5,9 +5,12 @@
     </md-toolbar>
     <div class="genres-list">
       <genre-filter
-        @input="onGenreSelected"
+
         v-for="genre in getGenres" :key="genre.id"
-                          :genre="genre"></genre-filter>
+                          :genre="genre"
+                          :checked="isGenreSelected(genre)"
+        @input="onGenreSelected"
+      ></genre-filter>
     </div>
   </div>
 </template>
@@ -22,20 +25,25 @@ export default {
   computed: {
     ...mapGetters({
       getGenres: 'products/getGenres'
-    })
+    }),
+    selectedGenres() {
+      return this.$store.state.products.selectedGenreList
+    }
   },
   methods: {
     onGenreSelected({value, genre}){
-      this.$emit("filteredByGenre", genre)
       let genreList = _.cloneDeep(this.$store.state.products.selectedGenreList)
       if(value){
         genreList.push(genre)
-        console.log("genre filtered by: ", genre)
       }
       else {
         genreList = genreList.filter(item => item.id !== genre.id)
       }
       this.$store.commit('products/setSelectedGenreList', genreList)
+    },
+    isGenreSelected(targetGenre) {
+      const result = this.selectedGenres.some(item => item.id === targetGenre.id)
+      return result
     }
   }
 }
@@ -45,7 +53,6 @@ export default {
 
 .genres-wrapper {
   padding: 20px;
-  width: 20%;
 }
 
 #genres-list {

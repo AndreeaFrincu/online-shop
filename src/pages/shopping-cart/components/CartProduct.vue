@@ -12,14 +12,15 @@
       <md-button @click="increaseQuantity" class="md-icon-button md-list-action">
         <md-icon class="fa fa-plus-circle"></md-icon>
       </md-button>
-      <md-dialog-confirm
-        :md-active.sync="active"
-        md-title="Are you sure you want to remove the item from your cart?"
-        md-content="Choose yes or no"
-        md-confirm-text="Yes"
-        md-cancel-text="No"
-        @md-cancel="onNo"
-        @md-confirm="onYes" />
+      <md-dialog :md-active.sync="active"
+                 :md-click-outside-to-close="false">
+        <md-dialog-title>Are you sure you want to remove the item from your cart?</md-dialog-title>
+        <p class="dialog-text">To proceed click YES</p>
+        <md-dialog-actions>
+          <md-button class="md-primary" @click="onNo">No</md-button>
+          <md-button class="md-primary" @click="onYes">Yes</md-button>
+        </md-dialog-actions>
+      </md-dialog>
 
       <md-button @click="onYes" class="md-icon-button md-list-action">
         <md-icon class="fa fa-trash"></md-icon>
@@ -64,7 +65,7 @@ export default {
       this.$store.commit('cart/removeItem', this.product)
     },
     onNo() {
-
+      this.active = false
     }
   }
 }
@@ -80,6 +81,11 @@ export default {
 
 span {
   padding-top: 10px;
+}
+
+.dialog-text {
+  display: flex;
+  justify-content: center;
 }
 
 </style>

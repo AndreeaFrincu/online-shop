@@ -18,21 +18,26 @@ export default {
     sortList:[
       {
         id: 1,
+        name:'None',
+        value: null
+      },
+      {
+        id: 2,
         name:'Price (Ascending)',
         value: '+price'
       },
       {
-        id: 2,
+        id: 3,
         name:'Price (Descending)',
         value: '-price'
       },
       {
-        id: 3,
+        id: 4,
         name:'Alphabetic (Ascending)',
         value: '+title'
       },
       {
-        id: 4,
+        id: 5,
         name:'Alphabetic (Descending)',
         value: '-title'
       }

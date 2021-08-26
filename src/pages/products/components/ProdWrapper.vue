@@ -21,7 +21,6 @@ export default {
   computed: {
     currentPage: {
       get() {
-        console.log('currentPage')
         return this.$store.state.products.currentPage
       },
       set(value) {
@@ -30,7 +29,6 @@ export default {
     } ,
     perPage: {
       get() {
-        console.log('perPage')
         return this.$store.state.products.perPage
       },
       set(value) {
@@ -50,40 +48,10 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Material+Icons");
 
 .prod-wrapper {
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   width: 80%;
-}
-
-.pagination-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-.pagination > li:first-child > a {
-  margin-left: 0;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-
-.pagination > li > a {
-  position: relative;
-  float: left;
-  padding: 6px 12px;
-  margin-left: -1px;
-  line-height: 1.42857143;
-  color: #337ab7;
-  text-decoration: none;
-  background-color: #fff;
-  border: 1px solid #ddd;
-}
-
-.pagination > .active > a {
-  z-index: 2;
-  color: #fff;
-  cursor: default;
-  background-color: #337ab7;
-  border-color: #337ab7;
 }
 
 </style>

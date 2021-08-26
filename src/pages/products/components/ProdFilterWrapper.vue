@@ -1,7 +1,10 @@
 <template>
   <div class="prod-filter-wrapper-content">
     <md-card>
-      <genres-filter></genres-filter>
+      <div class="left-side">
+        <genres-filter></genres-filter>
+        <prod-filters></prod-filters>
+      </div>
       <prod-wrapper></prod-wrapper>
     </md-card>
   </div>
@@ -11,9 +14,10 @@
 import ProdWrapper from "./ProdWrapper";
 import GenresFilter from "./GenreFilterList";
 import _ from "lodash";
+import ProdFilters from "./ProdFilters";
 export default {
   name: "ProdFilterWrapper",
-  components: {GenresFilter, ProdWrapper}
+  components: {ProdFilters, GenresFilter, ProdWrapper}
 }
 </script>
 
@@ -28,6 +32,12 @@ export default {
   display: flex;
   flex-direction: row;
   margin: 30px 100px;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
 }
 
 </style>
