@@ -6,7 +6,9 @@
       <cart-list></cart-list>
       <div class="bottom-cart">
         <cart-total v-if="getTotalPrice>0"></cart-total>
-        <md-button class="control-btn md-raised md-primary" v-if="getTotalPrice>0">Checkout</md-button>
+        <router-link id="link-products" to="/checkout">
+          <md-button class="control-btn md-raised md-primary" v-if="getTotalPrice>0">Checkout</md-button>
+        </router-link>
         <router-link id="link-products" to="/products">
           <md-button id="continue-sh" class="control-btn md-raised md-primary">Continue Shopping</md-button>
         </router-link>
@@ -43,9 +45,6 @@ export default {
 
 .cart-card {
   height: 600px;
-}
-
-.md-card {
   display: flex;
   align-items: center;
   flex-direction: column;
