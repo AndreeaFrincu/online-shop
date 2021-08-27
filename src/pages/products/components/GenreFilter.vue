@@ -31,7 +31,6 @@ export default {
   }),
   methods: {
     filterProduct() {
-      // console.log("clicked")
       this.$emit("input", {genre: this.genre, value: this.boolean})
     }
   }
