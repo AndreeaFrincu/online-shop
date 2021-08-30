@@ -1,26 +1,23 @@
-import _ from "lodash";
-import Database from "../../../database/Database";
-
 const state = {
-  countriesList: []
+  currentCountry: null
 }
 const mutations = {
-  setCountries(state, value) {
-    state.countriesList = value
+  setCountry(state, value) {
+    state.currentCountry = value
   }
 }
 const actions = {
-  setSelectItems({commit}) {
+  setCheckout({commit}) {
     //retrieve data
-    let countries = Database.countries
+    let country = 'default'
 
     //set data
-    commit('setCountries', countries)
+    commit('setCountry', country)
   }
 }
 const getters = {
-  getCountries: state => {
-    return state.countriesList
+  getCurrentCountry: state => {
+    return state.currentCountry
   }
 }
 

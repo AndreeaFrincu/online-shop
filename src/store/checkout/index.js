@@ -1,4 +1,4 @@
-import store from "../products/store";
+import store from "../checkout/store";
 
 export default {
   store: store

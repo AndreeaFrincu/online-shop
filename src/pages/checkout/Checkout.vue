@@ -13,7 +13,7 @@ export default {
   name: "Checkout",
   components: {NavBar, CheckoutCard},
   mounted() {
-    this.$store.dispatch('checkout/setSelectItems')
+    this.$store.dispatch('checkout/setCheckout')
   }
 }
 </script>
