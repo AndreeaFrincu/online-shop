@@ -1,50 +1,52 @@
 <template>
-  <div class="select-list-content">
+  <div class="select-list-content" id="country-list">
     <md-list class="select-list-wrapper">
       <md-list-item class="select-list-title" @click="isHidden = !isHidden">
-        <span class="md-list-item-text">Select Country</span>
+        <span class="md-list-item-text">Select Region</span>
         <md-icon>expand_more</md-icon>
       </md-list-item>
 
-      <md-list class="select-list"
-      v-if="!isHidden">
-        <checkout-select-item
-          v-for="country in getCountries" :key="country.id"
-          :country="country"></checkout-select-item>
-      </md-list>
+      <region-item class="select-list" v-if="!isHidden" #[getCurrentCountry]="{countryRegions}">
+        <md-list>
+          <md-list-item v-for="region in countryRegions" :key="region"
+                        @click="onRegionClicked">
+            {{ region }}
+          </md-list-item>
+        </md-list>
+      </region-item>
     </md-list>
   </div>
 </template>
 
 <script>
-import CheckoutSelectItem from "./CheckoutSelectItem";
 import {mapGetters} from "vuex";
-
+import RegionItem from "./RegionItem";
 export default {
-  name: "CheckoutSelectList",
-  components: {CheckoutSelectItem},
+  name: "RegionList",
+  components: {RegionItem},
   computed: {
     ...mapGetters({
-      getCountries: 'checkout/getCountries'
+      getCurrentCountry: 'checkout/getCurrentCountry'
     })
   },
-  data: () => ({
-    isHidden: false
-  }),
   methods: {
-    onSelectClicked() {
+    onRegionClicked() {
 
     }
-  }
+  },
+  props: {},
+  data: () => ({
+    isHidden: true
+  })
 }
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css?family=Material+Icons");
 
 .select-list-content {
   width: 100%;
   display: flex;
+  flex-direction: column;
 }
 
 .select-list-wrapper {
@@ -63,7 +65,7 @@ export default {
 }
 
 .select-list {
-  height: 300px;
+  height: 200px;
   overflow: auto;
 }
 

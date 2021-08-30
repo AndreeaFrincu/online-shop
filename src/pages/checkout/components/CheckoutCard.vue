@@ -3,8 +3,8 @@
     <md-card class="checkout-card">
       <checkout-toolbar></checkout-toolbar>
       <div class="card-container">
-        <checkout-select-list id="country-list"></checkout-select-list>
-        <checkout-select-list id="country-list"></checkout-select-list>
+        <country-list></country-list>
+        <region-list></region-list>
       </div>
     </md-card>
   </div>
@@ -12,15 +12,22 @@
 
 <script>
 import CheckoutToolbar from "./CheckoutToolbar";
-import CheckoutSelectList from "./CheckoutSelectList";
+import RegionList from "./RegionList";
+import CountryList from "./CountryList";
 
 export default {
   name: "CheckoutCard",
-  components: {CheckoutToolbar, CheckoutSelectList}
+  components: {CountryList, RegionList, CheckoutToolbar},
+  data: () => ({
+  }),
+  methods: {
+
+  }
 }
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css?family=Material+Icons");
 
 .checkout-card-content {
   display: flex;
@@ -43,20 +50,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-}
-
-#country-list {
-  width: 20%;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-}
-
-#county-list {
-  width: 20%;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
+  padding: 20px;
 }
 
 </style>

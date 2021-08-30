@@ -176,51 +176,7 @@ const genres = [
   }
 ]
 
-const countries = [
-  {
-    id: 1,
-    name: "Romania"
-  },
-  {
-    id: 2,
-    name: "Italy"
-  },
-  {
-    id: 3,
-    name: "Germany"
-  },
-  {
-    id: 4,
-    name: "United Kingdom"
-  },
-  {
-    id: 5,
-    name: "Spain"
-  },
-  {
-    id: 6,
-    name: "Japan"
-  },
-  {
-    id: 7,
-    name: "Sweden"
-  },
-  {
-    id: 8,
-    name: "Finland"
-  },
-  {
-    id: 9,
-    name: "Norway"
-  },
-  {
-    id: 10,
-    name: "Canada"
-  }
-]
-
 export default {
   products: products,
-  genres: genres,
-  countries: countries
+  genres: genres
 }
