@@ -1,11 +1,8 @@
 <template>
   <div class="app-select">
-    <h1>App select</h1>
-    <select>
-      <template>
+    <span>
 
-      </template>
-    </select>
+    </span>
   </div>
 </template>
 
@@ -13,8 +10,11 @@
 export default {
   name: "AppSelect",
   props: {
-    options: [],
-  }
+
+  },
+  data: () => ({
+
+  })
 }
 </script>
 
