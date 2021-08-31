@@ -3,8 +3,9 @@
     <md-card class="checkout-card">
       <checkout-toolbar></checkout-toolbar>
       <div class="card-container">
-        <country-list></country-list>
-        <region-list></region-list>
+        <app-select>
+
+        </app-select>
       </div>
     </md-card>
   </div>
@@ -12,13 +13,13 @@
 
 <script>
 import CheckoutToolbar from "./CheckoutToolbar";
-import RegionList from "./RegionList";
-import CountryList from "./CountryList";
+import AppSelect from "../../../components/AppSelect";
 
 export default {
   name: "CheckoutCard",
-  components: {CountryList, RegionList, CheckoutToolbar},
+  components: {AppSelect, CheckoutToolbar},
   data: () => ({
+
   }),
   methods: {
 
