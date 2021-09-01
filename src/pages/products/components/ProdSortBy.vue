@@ -6,7 +6,8 @@
 
     <md-menu-content>
       <md-menu-item @click="sortProduct(sortItem)"
-                    v-for="sortItem in sortList">{{ sortItem.name }}</md-menu-item>
+                    v-for="sortItem in sortList"
+                    :key="sortItem.id">{{ sortItem.name }}</md-menu-item>
     </md-menu-content>
   </md-menu>
 </template>

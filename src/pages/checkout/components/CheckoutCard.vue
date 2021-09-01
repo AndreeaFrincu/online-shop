@@ -3,9 +3,20 @@
     <md-card class="checkout-card">
       <checkout-toolbar></checkout-toolbar>
       <div class="card-container">
-        <app-select>
+        <app-select
+          v-model="option"
+          :options="optionsList">
+          <template #option="props">
+            {{ getOptionName(props) }}
+          </template>
 
+          <template
+            #selected="props">
+            {{ getSelectedName(props) }}
+          </template>
         </app-select>
+        <p v-if="option !== null">{{ option.name }}</p>
+        <p v-else></p>
       </div>
     </md-card>
   </div>
@@ -14,16 +25,43 @@
 <script>
 import CheckoutToolbar from "./CheckoutToolbar";
 import AppSelect from "../../../components/AppSelect";
+import _ from 'lodash'
 
 export default {
   name: "CheckoutCard",
   components: {AppSelect, CheckoutToolbar},
   data: () => ({
-
+    option: null,
+    optionsList: [
+      {
+        id: 1,
+        name: 'option1'
+      },
+      {
+        id: 2,
+        name: 'option2'
+      },
+      {
+        id: 3,
+        name: 'option3'
+      },
+      {
+        id: 4,
+        name: 'option4'
+      }
+    ]
   }),
   methods: {
-
-  }
+    getOptionName(prop) {
+      const result =  _.get(prop, 'data.name')
+      return result ? `xxx ${result}` : '-'
+    },
+    getSelectedName(prop) {
+      const result =  _.get(prop, 'data.name')
+      return result ? `yyy ${result}` : '-'
+    }
+  },
+  computed: {}
 }
 </script>
 

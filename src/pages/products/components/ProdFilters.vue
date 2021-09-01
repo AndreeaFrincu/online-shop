@@ -15,6 +15,7 @@
         <prod-chips
           v-if="getSelectedGenres.length>0"
           v-for="genre in getSelectedGenres"
+          :key="genre.id"
           :genre="genre"></prod-chips>
       </div>
     </div>
