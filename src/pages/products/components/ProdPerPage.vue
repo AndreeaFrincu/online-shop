@@ -6,7 +6,8 @@
 
     <md-menu-content>
       <md-menu-item @click="pageProducts(pageNumber)"
-                    v-for="pageNumber in onPageSortList">{{ pageNumber.name }}</md-menu-item>
+                    v-for="pageNumber in onPageSortList"
+                    :key="pageNumber.id">{{ pageNumber.name }}</md-menu-item>
     </md-menu-content>
   </md-menu>
 </template>
